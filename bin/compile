@@ -5,16 +5,16 @@
 set -e
 
 # debug
-#set -x
+# set -x
 
 function get_git_sha {
   if [ -d ${GIT_DIR} ]; then
-    cd GIT_DIR
+    cd $GIT_DIR
     GIT_SHA=`git rev-parse HEAD`
     export GIT_SHA="$GIT_SHA"
-    echo "Got and set GIT_SHA to $GIT_SHA"
+    echo -n "\e[0;32m-----> Got and set GIT_SHA to $GIT_SHA\e[0m"
   else
-    echo "Didn't find the $GIT_DIR directory"
+    echo -n "\e[0;31m-----> Didn't find the $GIT_DIR directory\e[0m"
   fi
 }
 get_git_sha

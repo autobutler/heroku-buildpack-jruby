@@ -12,9 +12,9 @@ function get_git_sha {
     cd $GIT_DIR
     GIT_SHA=`git rev-parse HEAD`
     export GIT_SHA="$GIT_SHA"
-    echo -n "\e[0;32m-----> Got and set GIT_SHA to $GIT_SHA\e[0m"
+    echo "-----> Got and set GIT_SHA to $GIT_SHA"
   else
-    echo -n "\e[0;31m-----> Didn't find the $GIT_DIR directory\e[0m"
+    echo "-----> Didn't find the $GIT_DIR directory"
   fi
 }
 get_git_sha

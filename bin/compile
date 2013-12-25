@@ -7,6 +7,18 @@ set -e
 # debug
 #set -x
 
+function get_git_sha {
+  if [ -f ${GIT_DIR} ]; then
+    cd GIT_DIR
+    GIT_SHA=`git rev-parse HEAD`
+    export GIT_SHA="$GIT_SHA"
+    echo "Got and set GIT_SHA to $GIT_SHA"
+  else
+    echo "Didn't find the $GIT_DIR directory"
+  fi
+}
+get_git_sha
+
 # clean up leaking environment
 unset GIT_DIR
 

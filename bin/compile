@@ -7,11 +7,14 @@ set -e
 # debug
 # set -x
 
+BUILD_DIR=$1
+CACHE_DIR=$2
+
 function get_git_sha {
   if [ -d ${GIT_DIR} ]; then
     cd $GIT_DIR
     GIT_SHA=`git rev-parse HEAD`
-    echo "$GIT_SHA" > .git_sha
+    echo "$GIT_SHA" > ${BUILD_DIR}/.git_sha
     echo "-----> Got and set GIT_SHA to $GIT_SHA"
   else
     echo "-----> Didn't find the $GIT_DIR directory"
@@ -21,9 +24,6 @@ get_git_sha
 
 # clean up leaking environment
 unset GIT_DIR
-
-BUILD_DIR=$1
-CACHE_DIR=$2
 
 function indent {
   c='s/^/       /'

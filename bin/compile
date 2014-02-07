@@ -74,13 +74,13 @@ function download_jruby_and_install_default_gems {
     jruby $JRUBY_OPTS -S jgem install bundler rake | indent
   fi
 
-  echo "----> Removing old jruby-opensll"
+  echo "----> Removing old jruby-openssl"
   # Trying stuff out...
-  gem uninstall jruby-openssl -v 0.9.3 | indent
-  gem uninstall jruby-openssl -v 0.9.4 | indent
+  jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.3 | indent
+  jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.4 | indent
 
   echo "----> Installing new jruby-openssl"
-  gem install jruby-openssl -v 0.9.4 | indent
+  jruby $JRUBY_OPTS -S jgem install jruby-openssl -v 0.9.4 | indent
 }
 
 function copy_jruby_to_build {

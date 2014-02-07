@@ -72,7 +72,12 @@ function download_jruby_and_install_default_gems {
 
     echo "-----> Installing JRuby-OpenSSL, Bundler and Rake"
     jruby $JRUBY_OPTS -S jgem install bundler rake | indent
-    jruby $JRUBY_OPTS -S jgem install jruby-openssl -v 0.9.4 | indent
+
+    # Trying stuff out...
+    gem uninstall jruby-openssl -v 0.9.3
+    gem uninstall jruby-openssl -v 0.9.4
+
+    gem install jruby-openssl -v 0.9.4 | indent
   fi
 }
 

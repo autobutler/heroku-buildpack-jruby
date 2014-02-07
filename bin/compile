@@ -61,7 +61,7 @@ function download_and_install_jdk {
 }
 
 function download_jruby_and_install_default_gems {
-  if [ ! -d "$CACHE_DIR/jruby-$VERSION" ]; then
+ # if [ ! -d "$CACHE_DIR/jruby-$VERSION" ]; then
     mkdir -p $CACHE_DIR
     echo "-----> Deleting previous JRuby installations if any"
     rm -rf $CACHE_DIR/jruby-*
@@ -72,15 +72,15 @@ function download_jruby_and_install_default_gems {
 
     echo "-----> Installing JRuby-OpenSSL, Bundler and Rake"
     jruby $JRUBY_OPTS -S jgem install bundler rake | indent
-  fi
 
-  echo "----> Removing old jruby-openssl"
-  # Trying stuff out...
-  jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.3 | indent
-  jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.4 | indent
+    echo "----> Removing old jruby-openssl"
+    # Trying stuff out...
+    jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.3 | indent
+    jruby $JRUBY_OPTS -S jgem uninstall jruby-openssl -v 0.9.4 | indent
 
-  echo "----> Installing new jruby-openssl"
-  jruby $JRUBY_OPTS -S jgem install jruby-openssl -v 0.9.4 | indent
+    echo "----> Installing new jruby-openssl"
+    jruby $JRUBY_OPTS -S jgem install jruby-openssl -v 0.9.4 | indent
+ # fi
 }
 
 function copy_jruby_to_build {

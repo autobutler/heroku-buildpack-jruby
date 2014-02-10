@@ -70,9 +70,9 @@ function download_jruby_and_install_default_gems {
     curl $JRUBY_TAR -s -o - | tar xzf - -C $CACHE_DIR/
     PATH=$CACHE_DIR/jruby-$VERSION/bin:$PATH
 
-    echo "-----> Installing JRuby-OpenSSL, Bundler and Rake"
-    jruby $JRUBY_OPTS -S jgem install bundler rake | indent
-    jruby $JRUBY_OPTS -S jgem install jruby-openssl -v 0.9.3 | indent
+    echo "-----> Installing Bundler"
+    jruby $JRUBY_OPTS -S jgem install bundler | indent
+    # jruby $JRUBY_OPTS -S jgem install rake jruby-openssl | indent
   fi
 }
 

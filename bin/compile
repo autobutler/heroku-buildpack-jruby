@@ -22,6 +22,18 @@ function get_git_sha {
 }
 get_git_sha
 
+function get_current_time {
+  if [ -d ${GIT_DIR} ]; then
+    cd $GIT_DIR
+    CURRENT_TIME=`date`
+    echo "$CURRENT_TIME" > ${BUILD_DIR}/.last_deploy
+    echo "-----> Got and set CURRENT_TIME to $CURRENT_TIME"
+  else
+    echo "-----> Didn't find the $GIT_DIR directory"
+  fi
+}
+get_current_time
+
 # clean up leaking environment
 unset GIT_DIR
 
